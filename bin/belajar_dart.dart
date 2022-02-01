@@ -1,41 +1,42 @@
-import 'dart:io';
-
+var count = 0;
 void main() {
-  userName();
+  permutation("legu");
+  print(count);
 }
 
-printStar(int stars) {
-  for (var i = 0; i < stars; i++) {
-    var star = "";
-    for (var j = 0; j < i; j++) {
-      star += "*";
+permutation(String s) {
+  perm(s, "");
+}
+
+perm(String str, String prefix) {
+  count++;
+  print(str + " " + prefix);
+  if (str.isEmpty) {
+    print(prefix);
+  } else {
+    for (var i = 0; i < str.length; i++) {
+      String rem = str.substring(0, i) + str.substring(i + 1);
+      perm(rem, prefix + str[i]);
     }
-    print(star);
   }
 }
 
-num calculateAverage(List<num> list) {
-  num average = 0;
-  for (num item in list) {
-    average += item;
+allFib(int n) {
+  for (int i = 0; i < n; i++) {
+    print(i.toString() + ": " + fib(i).toString());
   }
-  average /= list.length;
-  return average;
 }
 
-void userName() {
-  String? username;
-  bool notValid = false;
+fib(int n) {
+  if (n <= 0) {
+    return 0;
+  } else if (n == 1) {
+    return 1;
+  }
+  return fib(n - 1) + fib(n - 2);
+}
 
-  do {
-    stdout.write('Masukkan nama Anda (min. 6 karakter): ');
-    username = stdin.readLineSync();
-
-    if ((username?.length ?? 0) < 6) {
-      notValid = true;
-      print('Username Anda tidak valid');
-    } else {
-      notValid = false;
-    }
-  } while (notValid);
+bool isPalindrom(String text) {
+  var reversed = text.split('').reversed.join();
+  return reversed.toLowerCase() == text.toLowerCase();
 }
