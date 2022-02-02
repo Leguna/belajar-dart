@@ -1,4 +1,4 @@
-import '../variable.dart';
+import 'sort_utils.dart';
 
 void main(List<String> args) {
   print(quickSort(list));
