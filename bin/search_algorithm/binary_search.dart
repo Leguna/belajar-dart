@@ -35,7 +35,7 @@ int binarySearch(List<int> list, target) {
         return -1;
       }
       if (target <= list[middle]) {
-        end = middle;
+        end = middle - 1;
       } else {
         start = middle + 1;
       }
